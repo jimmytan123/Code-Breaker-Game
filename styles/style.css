@@ -1,0 +1,391 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Mina', sans-serif;
+  background-color: #000;
+  padding: 0;
+  background-image: url(../media/background.png);
+}
+
+img {
+  max-width: 100%;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+.game-wrapper {
+  width: 55rem;
+  height: 58rem;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+}
+
+.blue-text {
+  color: blue;
+}
+
+.red-text {
+  color: red;
+}
+
+footer {
+  text-align: center;
+  color: #fff;
+}
+
+h1 {
+  color: #78866b;
+  font-family: 'Press Start 2P', cursive;
+  background: #000;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.btns {
+  background: #c2c5aa;
+  border-radius: 12px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+}
+.btn-text {
+  display: block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  background: #606c38;
+  color: white;
+  transform: translateY(-6px);
+}
+
+.btns:active .btn-text {
+  transform: translateY(-2px);
+}
+
+/* ------
+styling for game header 
+---------*/
+
+.game-header {
+  padding: 0.7rem 0 0 0;
+  background-color: #000;
+  text-align: center;
+  min-height: 10%;
+  position: relative;
+  border-radius: 15px 15px 0 0;
+}
+
+.header-buttons {
+  position: absolute;
+  top: 6px;
+  right: 1rem;
+}
+
+.header-buttons button {
+  margin: 1rem 0.5rem 0 0.5rem;
+}
+
+.game-header #endGame-btn {
+  display: none;
+}
+
+.game-header h2 {
+  font-weight: 600;
+  color: #fff;
+}
+
+.modal-body {
+  text-align: left;
+}
+
+.table th,
+.table td {
+  text-align: center;
+}
+
+/* ------
+general styling for screens
+---------*/
+
+.screens {
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+  padding: 0 1rem 1rem 1rem;
+  color: #fff;
+  min-height: 30rem;
+  background-color: #000;
+  border-radius: 0 0 15px 15px;
+}
+
+.screens p {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.game-screen,
+.game-over-screen {
+  display: none;
+}
+
+.splash-screen,
+.game-over-screen {
+  text-align: center;
+}
+
+/* ------
+styling for splash screen
+---------*/
+
+.splash-screen {
+  padding-top: 2rem;
+}
+
+input#player-name {
+  padding: 0.4rem;
+  margin: 1rem 1rem 1rem 0;
+}
+
+.splash-screen button {
+  margin: 1rem 1rem 1rem 0;
+}
+
+.splash-screen img {
+  height: 300px;
+  object-fit: cover;
+  margin-top: 2rem;
+}
+
+#player-name-input {
+  padding-left: 0.4rem;
+}
+
+#name-confirmation-btn {
+  margin-left: 1rem;
+  padding: 0.2rem 0.8rem;
+  color: #fff;
+  background-color: #333d29;
+  border: none;
+  font-weight: 600;
+}
+
+.active-button {
+  border: 3px solid yellow;
+}
+
+.playGame-btn {
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+  padding: 10px 2px 10px 10px;
+  background-color: lightgray;
+  text-shadow: -1px -1px black, 1px 1px white;
+  color: gray;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  box-shadow: 0 0.2em gray;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-family: 'Press Start 2p', cursive;
+  margin: 0.5rem 0 0 0;
+}
+
+/* ------
+styling for game screen
+---------*/
+.game-screen {
+  position: relative;
+}
+
+.player-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+}
+
+.timing-section {
+  flex: 0.8 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.form-select {
+  width: 4.5rem;
+  height: 3rem;
+  margin-right: 1.5rem;
+}
+
+.code-selection-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.game-screen .wrapper {
+  background-image: url('../media/camo.png');
+  border-radius: 10px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.code-selection-section .btns {
+  background: #f9c74f;
+}
+
+.code-selection-section .btn-text {
+  background: #5c6d70;
+}
+.code-input-section {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.5rem;
+  margin-left: 2rem;
+}
+
+#code-confirm-section {
+  margin-right: 2rem;
+}
+
+#secret-code-text {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.history-board p {
+  text-align: center;
+}
+
+.history-board .red-text,
+.history-board .blue-text {
+  font-weight: 600;
+}
+
+.history-text p {
+  font-size: 1.5rem;
+  width: 66%;
+  margin: 1.3rem auto;
+  border-radius: 10px;
+}
+
+.history-board .history-text:nth-of-type(1) p {
+  background-color: #c2c5aa;
+}
+
+.history-board .history-text:nth-of-type(2) p {
+  background-color: #a4ac86;
+}
+
+.history-board .history-text:nth-of-type(3) p {
+  background-color: #757c5f;
+}
+
+.history-board .history-text:nth-of-type(4) p {
+  background-color: #585f42;
+}
+
+.history-board .history-text:nth-of-type(5) p {
+  background-color: #414833;
+}
+
+.history-board .history-text:nth-of-type(6) p {
+  background-color: #363b2a;
+}
+
+.history-board .history-text:nth-of-type(7) p {
+  background-color: #2d3123;
+}
+
+.history-board .history-text:nth-of-type(7) p {
+  background-color: #252c1e;
+}
+
+.history-board .history-text:nth-of-type(8) p {
+  background-color: #171b13;
+}
+
+.history-board .history-text:nth-of-type(9) p {
+  background-color: #090a07;
+}
+
+.history-text span {
+  margin: 0 5rem;
+}
+
+.legend {
+  position: absolute;
+  bottom: 0;
+}
+
+.legend p {
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+}
+
+.legend p:last-of-type {
+  margin-top: 0.5rem;
+}
+
+/* ------
+styling for game-over screen
+---------*/
+
+.rating-stars {
+  margin-bottom: 1rem;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.rating-stars svg {
+  fill: #ff9100;
+  margin: 1rem 0.5rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+#again-btn,
+.quit-btn {
+  margin: 1rem 1rem 1rem 0;
+}
+
+.game-over-text {
+  width: 85%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #343a40;
+  color: #ff758f;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  line-height: 2;
+}
