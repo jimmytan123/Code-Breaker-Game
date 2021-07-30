@@ -2,6 +2,7 @@
 
 //game object
 const game = {
+  title: 'Code Breaker',
   isRunning: false,
   players: [],
   screen: 'splash-screen',
@@ -173,7 +174,7 @@ const game = {
       $('#secret-code-text').html('* 	&mdash; * 	&mdash; * 	&mdash; *');
     }, 1200);
   },
-  //method: generate the secret code and add it into the array
+  //method: randomly generate the secret code and add it into the array
   generateSecretCode: function () {
     this.secretCode.splice(0, this.secretCode.length);
     for (let i = 0; i < 4; i++) {
@@ -208,7 +209,6 @@ const game = {
           correct_number_correct_spot++;
           answerArrCopy[i] = -1;
           guessArrCopy[i] = -1;
-          //console.log(answerArrCopy, guessArrCopy);
         }
       }
 
@@ -231,17 +231,19 @@ const game = {
       //console.log('correct number and spot', correct_number_correct_spot);
       //console.log('correct number but wrong spot', correct_number_wrong_spot);
 
-      //call method: display the guesses and the hint numbers on screen
+      //call method: display the player guess and hint on game screen
       this.displayGuesses(
         guessArr,
         correct_number_correct_spot,
         correct_number_wrong_spot
       );
 
+      //if all numbers are correctly guessed, show win
       if (correct_number_correct_spot === 4) {
         this.showWin();
       }
 
+      //if the opportunites is 0 and still not guess all the correct numbers, show failure
       if (this.opportunities === 0 && correct_number_correct_spot < 4) {
         this.showFailure();
       }
@@ -291,7 +293,7 @@ const game = {
       )}<span class='red-text'>${redHint}</span></p></div>`
     );
   },
-  //method: if player wins, calculate ratings base on the remaining opportunities and the proportion of the time used
+  //method: if player wins, determine ratings base on the remaining opportunities and the proportion of the time used
   calculateRatings: function () {
     if (game.isWin === true) {
       if (
@@ -334,8 +336,10 @@ const game = {
       `);
     }
   },
-  //method: set up method, includes event listeners
+  //method: set up method, includes basic setup and set up event listeners for html elements
   setup: function () {
+    $('h1').text(`${game.title}`);
+
     $('#splash-screen #playGame-btn').on('click', () => {
       if (this.gameLevel && this.players.length) {
         this.switchScreen('game-screen');
@@ -426,7 +430,7 @@ const game = {
       $('#hard-btn').addClass('active-button');
     });
 
-    //when user input the guess code and click the confirm button, grab the user guesses and do comparision
+    //when user input the guess code and click the confirm button on game screen, grab the user guesses and do comparision
     $('#code-confirm-btn').on('click', () => {
       document.querySelector('#click-audio').play();
 
