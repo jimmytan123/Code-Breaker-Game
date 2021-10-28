@@ -1,286 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code Breaker | Jimmy Tan</title>
 
     <!-- google fonts CDN -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mina&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mina&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
 
     <!-- customized stylesheet -->
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
 
-</head>
-
-<body>
-
-    <div class='game-wrapper'>
-
-        <!-- game header -->
-        <header class='game-header'>
-            <h1></h1>
-            <div class='header-buttons'>
-                <button id='endGame-btn' class='endGame-btn btns'>
-                    <span class='btn-text'>END</span></button>
-                <!-- Help button trigger modal -->
-                <button id='help-btn' class='help-btn btns' data-bs-toggle='modal' data-bs-target='#setUpModal'><span
-                        class='btn-text'>HELP</span></button>
-                <!-- Help Modal -->
-                <div class=" modal fade" id="setUpModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="setUpModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="setUpModalLabel">Setup Instructions</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>
-                                    Enter your name and choose the difficulty level. <br />
-                                    Secret code to break: a combination of 4-digit codes from 1 to 6
-                                    (example: 1363). Duplicate digits are possible.
-                                </p>
-
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Level</th>
-                                            <th scope="col">Timer</th>
-                                            <th scope="col">Number of Guesses (opportunities)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class='align-middle'>
-                                        <tr>
-                                            <th scope="row">Easy</th>
-                                            <td>10 mins</td>
-                                            <td>10</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Medium</th>
-                                            <td>4 mins</td>
-                                            <td>10</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Hard</th>
-                                            <td>3 mins</td>
-                                            <td>10</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button class="btn btn-warning" data-bs-target="#gamePlayModal" data-bs-toggle="modal"
-                                    data-bs-dismiss="modal">More Info</button>
-                            </div>
-                        </div>
-                    </div>
+  <body>
+    <div class="game-wrapper">
+      <!-- game header -->
+      <header class="game-header">
+        <h1></h1>
+        <div class="header-buttons">
+          <button id="endGame-btn" class="endGame-btn btns">
+            <span class="btn-text">END</span>
+          </button>
+          <!-- Help button trigger modal -->
+          <button
+            id="help-btn"
+            class="help-btn btns"
+            data-bs-toggle="modal"
+            data-bs-target="#setUpModal"
+          >
+            <span class="btn-text">HELP</span>
+          </button>
+          <!-- Help Modal -->
+          <div
+            class="modal fade"
+            id="setUpModal"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="setUpModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="setUpModalLabel">
+                    Setup Instructions
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
                 </div>
+                <div class="modal-body">
+                  <p>
+                    Enter your name and choose the difficulty level. <br />
+                    Secret code to break: a combination of 4-digit codes from 1
+                    to 6 (example: 1363). Duplicate digits are possible.
+                  </p>
 
-
-                <div class="modal fade" id="gamePlayModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="gamePlayModalLabel2" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="gamePlayModalLabel2">Gameplay Instructions</h5>
-                            </div>
-                            <div class="modal-body">
-                                <p> Our mission is to break a 4-digit code. The secret code is a combination of 4
-                                    digits from 1 to 6
-                                    (example:
-                                    1-3-6-3). Duplicate digits are possible.
-                                </p>
-                                <p>Steps to play</p>
-                                <ol>
-                                    <li>Select digits from the drop down form, then
-                                        click confirm button.</li>
-                                    <li>After each turn, you'll get a feedback from the computer.
-                                        <ul>
-                                            <li>A <strong><span class='blue-text'>blue</span></strong>
-                                                number
-                                                indicates the <strong>correct value and the correct
-                                                    position</strong>.
-                                            </li>
-                                            <li>A
-                                                <strong>
-                                                    <span class='red-text'>red</span>
-                                                </strong>
-                                                number indicates <strong>correct value</strong> , but <strong>wrong
-                                                    position</strong>.
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>The timer is different based on the game level. Make sure to drink a cup of
-                                        coffee before diving into hard mode...
-                                    </li>
-                                    <li>Good luck with your mission to break the code...</li>
-                                </ol>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" id="gamePlayInstru-close-btn"
-                                    class="gamePlayInstru-close-btn btn btn-secondary"
-                                    data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Level</th>
+                        <th scope="col">Timer</th>
+                        <th scope="col">Number of Guesses (opportunities)</th>
+                      </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                      <tr>
+                        <th scope="row">Easy</th>
+                        <td>10 mins</td>
+                        <td>10</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Medium</th>
+                        <td>4 mins</td>
+                        <td>10</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Hard</th>
+                        <td>3 mins</td>
+                        <td>10</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    class="btn btn-warning"
+                    data-bs-target="#gamePlayModal"
+                    data-bs-toggle="modal"
+                    data-bs-dismiss="modal"
+                  >
+                    More Info
+                  </button>
+                </div>
+              </div>
             </div>
+          </div>
 
-        </header>
-
-
-        <!-- splash screen -->
-        <section class='screens splash-screen' id='splash-screen'>
-            <h2>Welcome</h2>
-            <div class='player-name-input-field'>
-                <input type="text" id='player-name-input' placeholder="enter your name first...">
-                <button type='button' id='name-confirmation-btn' class='btn btn-warning' disabled>Confirm</button>
+          <div
+            class="modal fade"
+            id="gamePlayModal"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="gamePlayModalLabel2"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="gamePlayModalLabel2">
+                    Gameplay Instructions
+                  </h5>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    Our mission is to break a 4-digit code. The secret code is a
+                    combination of 4 digits from 1 to 6 (example: 1-3-6-3).
+                    Duplicate digits are possible.
+                  </p>
+                  <p>Steps to play</p>
+                  <ol>
+                    <li>
+                      Select digits from the drop down form, then click confirm
+                      button.
+                    </li>
+                    <li>
+                      After each turn, you'll get a feedback from the computer.
+                      <ul>
+                        <li>
+                          A
+                          <strong><span class="blue-text">blue</span></strong>
+                          number indicates the
+                          <strong>correct value and the correct position</strong
+                          >.
+                        </li>
+                        <li>
+                          A
+                          <strong>
+                            <span class="red-text">red</span>
+                          </strong>
+                          number indicates <strong>correct value</strong> , but
+                          <strong>wrong position</strong>.
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      The timer is different based on the game level. Make sure
+                      to drink a cup of coffee before diving into hard mode...
+                    </li>
+                    <li>Good luck with your mission to break the code...</li>
+                  </ol>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    id="gamePlayInstru-close-btn"
+                    class="gamePlayInstru-close-btn btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class='level-selection-field'>
-                <p>Please select the game level, default Easy</p>
+          </div>
+        </div>
+      </header>
 
-                <button id='easy-btn' class='btns game-level-btns' disabled><span class='btn-text'>Easy</span></button>
-                <button id='medium-btn' class='btns game-level-btns' disabled><span
-                        class='btn-text'>Medium</span></button>
-                <button id='hard-btn' class='btns game-level-btns' disabled><span class='btn-text'>Hard</span></button>
+      <!-- splash screen -->
+      <section class="screens splash-screen" id="splash-screen">
+        <h2>Welcome</h2>
+        <div class="player-name-input-field">
+          <input
+            type="text"
+            id="player-name-input"
+            placeholder="enter your name first..."
+          />
+          <button
+            type="button"
+            id="name-confirmation-btn"
+            class="btn btn-warning"
+            disabled
+          >
+            Confirm
+          </button>
+        </div>
+        <div class="level-selection-field">
+          <p>Please select the game level, default Easy</p>
+
+          <button id="easy-btn" class="btns game-level-btns" disabled>
+            <span class="btn-text">Easy</span>
+          </button>
+          <button id="medium-btn" class="btns game-level-btns" disabled>
+            <span class="btn-text">Medium</span>
+          </button>
+          <button id="hard-btn" class="btns game-level-btns" disabled>
+            <span class="btn-text">Hard</span>
+          </button>
+        </div>
+        <button id="playGame-btn" class="playGame-btn">START</button>
+        <div>
+          <img src="./media/hack.jpg" alt="hack" />
+        </div>
+      </section>
+
+      <!-- game screen -->
+      <section class="screens game-screen" id="game-screen">
+        <p id="secret-code-text"></p>
+
+        <div class="wrapper">
+          <header class="player-info" id="player-info">
+            <div class="name-guesses-section">
+              <div id="player-name-text"></div>
+              <div id="opportunities-text"></div>
             </div>
-            <button id='playGame-btn' class='playGame-btn'>START</button>
-            <div>
-                <img src="./media/hack.jpg" alt="hack">
+            <div class="timing-section">
+              <div id="timer-text"></div>
+              <div class="progress">
+                <div
+                  id="countdown-progress-bar"
+                  class="progress-bar progress-bar-striped bg-danger"
+                  role="progressbar"
+                  style="width: 100%"
+                  aria-valuenow="100"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
             </div>
+          </header>
+
+          <div class="code-selection-section">
+            <div class="code-input-section">
+              <select
+                id="first-digit-select"
+                class="form-select form-select-lg"
+                aria-label=".form-select-lg"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+              <select
+                id="second-digit-select"
+                class="form-select form-select-lg"
+                aria-label=".form-select-lg"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+              <select
+                id="third-digit-select"
+                class="form-select form-select-lg"
+                aria-label=".form-select-lg"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+              <select
+                id="fourth-digit-select"
+                class="form-select form-select-lg"
+                aria-label=".form-select-lg"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </div>
+            <div id="code-confirm-section">
+              <button id="code-confirm-btn" class="btns code-confirm-btn">
+                <span class="btn-text">Confirm</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <section>
+          <div class="history-board"></div>
         </section>
 
-        <!-- game screen -->
-        <section class='screens game-screen' id='game-screen'>
-            <p id='secret-code-text'></p>
+        <div class="legend">
+          <div>
+            <p>
+              <span class="blue-text">Blue Num </span><br />Correct Value<br />Correct
+              Position
+            </p>
+          </div>
+          <div>
+            <p>
+              <span class="red-text">Red Num </span><br />Correct Value<br />Wrong
+              Position
+            </p>
+          </div>
+        </div>
+      </section>
 
-            <div class='wrapper'>
-                <header class='player-info' id='player-info'>
-                    <div class='name-guesses-section'>
-                        <div id="player-name-text"></div>
-                        <div id='opportunities-text'></div>
-                    </div>
-                    <div class='timing-section'>
-                        <div id='timer-text'></div>
-                        <div class="progress">
-                            <div id='countdown-progress-bar' class="progress-bar progress-bar-striped bg-danger"
-                                role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-                                aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </header>
+      <!-- game over screen -->
+      <section class="screens game-over-screen" id="game-over-screen">
+        <div id="victory-text" class="game-over-text">
+          <h2></h2>
+          <p></p>
+          <div class="rating-stars"></div>
+        </div>
+        <div id="failure-text" class="game-over-text">
+          <h2></h2>
+          <p></p>
+        </div>
+        <div id="common-game-over-text" class="game-over-text">
+          <h2>Game Over</h2>
+          <p>Why not try another round?</p>
+        </div>
 
-                <div class='code-selection-section'>
-                    <div class="code-input-section">
-                        <select id='first-digit-select' class="form-select form-select-lg" aria-label=".form-select-lg">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                        </select>
-                        <select id='second-digit-select' class="form-select form-select-lg"
-                            aria-label=".form-select-lg">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                        </select>
-                        <select id='third-digit-select' class="form-select form-select-lg" aria-label=".form-select-lg">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                        </select>
-                        <select id='fourth-digit-select' class="form-select form-select-lg"
-                            aria-label=".form-select-lg">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                        </select>
-                    </div>
-                    <div id='code-confirm-section'>
-                        <button id='code-confirm-btn' class='btns code-confirm-btn'><span
-                                class='btn-text'>Confirm</span></button>
-                    </div>
-                </div>
-            </div>
+        <button id="again-btn" class="btns">
+          <span class="btn-text">PLAY AGAIN</span>
+        </button>
+        <button id="quit-btn" class="btns quit-btn">
+          <span class="btn-text">QUIT</span>
+        </button>
+      </section>
 
-            <section>
-                <div class='history-board'></div>
-            </section>
+      <audio src="./media/click.wav" id="click-audio" preload="auto"></audio>
+      <audio src="./media/win.wav" id="win-audio" preload="auto"></audio>
+      <audio src="./media/lose.wav" id="lose-audio" preload="auto"></audio>
 
-            <div class="legend">
-                <div>
-                    <p><span class='blue-text'>Blue Num </span><br />Correct Value<br />Correct Position</p>
-                </div>
-                <div>
-                    <p><span class='red-text'>Red Num </span><br />Correct Value<br />Wrong Position</p>
-                </div>
-            </div>
-        </section>
+      <!-- game footer  -->
+      <footer><small>&copy; Jimmy Tan 2021</small></footer>
 
-        <!-- game over screen -->
-        <section class='screens game-over-screen' id='game-over-screen'>
-            <div id='victory-text' class="game-over-text">
-                <h2></h2>
-                <p></p>
-                <div class='rating-stars'></div>
-            </div>
-            <div id='failure-text' class="game-over-text">
-                <h2></h2>
-                <p></p>
-            </div>
-            <div id='common-game-over-text' class="game-over-text">
-                <h2>Game Over</h2>
-                <p>Why not try another round?</p>
-            </div>
-
-            <button id='again-btn' class='btns'><span class='btn-text'>PLAY AGAIN</span></button>
-            <button id='quit-btn' class='btns quit-btn'><span class='btn-text'>QUIT</span></button>
-
-        </section>
-
-
-        <audio src="./media/click.wav" id="click-audio" preload="auto"></audio>
-        <audio src="./media/win.wav" id="win-audio" preload="auto"></audio>
-        <audio src="./media/lose.wav" id="lose-audio" preload="auto"></audio>
-
-        <!-- game footer  -->
-        <footer><small>&copy; Jimmy Tan 2021</small></footer>
-
-        <!-- jQuery CDN -->
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <!-- BootStrap CDN -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-        <!-- Customized JavaScript -->
-        <script src='./scripts/index.js'></script>
+      <!-- jQuery CDN -->
+      <script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"
+      ></script>
+      <!-- BootStrap CDN -->
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"
+      ></script>
+      <!-- Customized JavaScript -->
+      <script src="./scripts/index.js"></script>
     </div>
-
-</body>
-
+  </body>
 </html>
